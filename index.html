@@ -10,24 +10,29 @@
 
   <body>
     <div id="calculator">
-      <div id="display">000</div>
+      <div id="display">
+        <p id="history">304 + 216</p>
+        <p id="result">520</p>
+      </div>
       <div id="buttons">
-        <button class="button digit" id="1">1</button>
-        <button class="button digit" id="2">2</button>
-        <button class="button digit" id="3">3</button>
-        <button class="button digit" id="4">4</button>
-        <button class="button digit" id="5">5</button>
-        <button class="button digit" id="6">6</button>
-        <button class="button digit" id="7">7</button>
-        <button class="button digit" id="8">8</button>
-        <button class="button digit" id="9">9</button>
-        <button class="button digit" id="0">0</button>
+        <button class="button" id="clear">AC</button>
+        <button class="button" id="clear">C</button>
         <button class="button operator" id="+">+</button>
         <button class="button operator" id="-">−</button>
         <button class="button operator" id="*">×</button>
         <button class="button operator" id="/">÷</button>
+        <button data-key="1" class="button digit">1</button>
+        <button data-key="2" class="button digit">2</button>
+        <button data-key="3" class="button digit">3</button>
+        <button data-key="4" class="button digit">4</button>
+        <button data-key="5" class="button digit">5</button>
+        <button data-key="6" class="button digit">6</button>
+        <button data-key="7" class="button digit">7</button>
+        <button data-key="8" class="button digit">8</button>
+        <button data-key="9" class="button digit">9</button>
+        <button data-key="0" class="button digit">0</button>
+        <button data-key="." class="button">.</button>
         <button class="button" id="=">=</button>
-        <button class="button" id="clear">Clear</button>
       </div>
     </div>
   </body>
