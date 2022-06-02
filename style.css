@@ -1,0 +1,22 @@
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #efefef;
+  height: 100vh;
+  margin: 0;
+}
+
+#calculator {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow: 17px 17px 34px #cccccc, -17px -17px 34px #f4f4f4;
+  height: 600px;
+  width: 320px;
+  padding: 24px;
+}
