@@ -94,3 +94,22 @@ button[data-key='='] {
 .square {
   aspect-ratio: 1;
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  justify-self: flex-end;
+  margin: 0 0 10px 0;
+  color: #090909;
+}
+
+footer a {
+  font-size: 22px;
+}
+
+.fa-github {
+  color: #090909;
+  padding: 0 0 0 4px;
+}

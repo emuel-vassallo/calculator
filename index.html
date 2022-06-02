@@ -5,35 +5,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script src="script.js" defer></script>
   </head>
 
   <body>
-    <div id="calculator">
-      <div id="display">
-        <p id="history">304 + 216</p>
-        <p id="result">520</p>
+    <main>
+      <div id="calculator">
+        <div id="display">
+          <p id="history">304 + 216</p>
+          <p id="result">520</p>
+        </div>
+        <div id="buttons">
+          <button class="button" id="clear">AC</button>
+          <button class="button" id="delete">C</button>
+          <button data-key="+" class="button operator square" id="+">+</button>
+          <button data-key="-" class="button operator square" id="-">−</button>
+          <button data-key="7" class="button digit square">7</button>
+          <button data-key="8" class="button digit square">8</button>
+          <button data-key="9" class="button digit square">9</button>
+          <button data-key="*" class="button operator square" id="*">×</button>
+          <button data-key="4" class="button digit square">4</button>
+          <button data-key="5" class="button digit square">5</button>
+          <button data-key="6" class="button digit square">6</button>
+          <button data-key="/" class="button operator square">÷</button>
+          <button data-key="1" class="button digit square">1</button>
+          <button data-key="2" class="button digit square">2</button>
+          <button data-key="3" class="button digit square">3</button>
+          <button data-key="=" class="button">=</button>
+          <button data-key="0" class="button digit">0</button>
+          <button data-key="." class="button square">.</button>
+        </div>
       </div>
-      <div id="buttons">
-        <button class="button" id="clear">AC</button>
-        <button class="button" id="delete">C</button>
-        <button data-key="+" class="button operator square" id="+">+</button>
-        <button data-key="-" class="button operator square" id="-">−</button>
-        <button data-key="7" class="button digit square">7</button>
-        <button data-key="8" class="button digit square">8</button>
-        <button data-key="9" class="button digit square">9</button>
-        <button data-key="*" class="button operator square" id="*">×</button>
-        <button data-key="4" class="button digit square">4</button>
-        <button data-key="5" class="button digit square">5</button>
-        <button data-key="6" class="button digit square">6</button>
-        <button data-key="/" class="button operator square">÷</button>
-        <button data-key="1" class="button digit square">1</button>
-        <button data-key="2" class="button digit square">2</button>
-        <button data-key="3" class="button digit square">3</button>
-        <button data-key="=" class="button">=</button>
-        <button data-key="0" class="button digit">0</button>
-        <button data-key="." class="button square">.</button>
-      </div>
-    </div>
+    </main>
+    <footer>
+      Made with ♥️ by <strong>Emuel Vassallo</strong>
+      <a href="https://github.com/emuel-vassallo/" target="_blank">
+        <i class="fa fa-github"></i>
+      </a>
+    </footer>
   </body>
 </html>
