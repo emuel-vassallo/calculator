@@ -1,4 +1,3 @@
-@import url('http://fonts.cdnfonts.com/css/digital-dismay');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body {
@@ -29,14 +28,16 @@ body {
 #display {
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
   flex-direction: column;
-  font-family: 'Digital Dismay', sans-serif;
-  letter-spacing: 6px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 5px;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
   border-radius: 0.5em;
   box-shadow: 5px 5px 26px #bebebe, -5px -5px 26px #ffffff;
   width: 90%;
+  height: 90px;
   padding: 16px;
   margin: 54px 0 18px 0;
   color: #090909;
