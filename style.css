@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: 'Montserrat', sans-serif;
   background-color: #efefef;
   height: 100vh;
   margin: 0;
@@ -18,10 +20,10 @@ body {
   border: 1px solid #e8e8e8;
   border-radius: 50px;
   background: #e8e8e8;
-  box-shadow: 9px 9px 31px #bebebe, -9px -9px 31px #ffffff;
-  height: 580px;
-  width: 287px;
-  padding: 36px;
+  box-shadow: 20px 20px 60px #c5c5c5, -20px -20px 60px #ffffff;
+  height: 592px;
+  width: 318px;
+  padding: 4px 32px 36px 32px;
 }
 
 #display {
@@ -30,12 +32,14 @@ body {
   justify-content: space-between;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  letter-spacing: 3px;
   background: #e8e8e8;
+  box-shadow: inset 5px 5px 15px #cecece, inset -5px -5px 15px #ffffff;
   border: 1px solid #e8e8e8;
-  border-radius: 0.5em;
-  box-shadow: 5px 5px 26px #bebebe, -5px -5px 26px #ffffff;
+  border-radius: 0.9em;
   width: 90%;
-  height: 90px;
+  height: 100%;
   padding: 16px;
   margin: 46px 0 26px 0;
   color: #090909;
@@ -45,6 +49,7 @@ body {
 #operations {
   margin: 0;
   font-size: 21px;
+  color: #262626;
 }
 
 #result {
@@ -61,15 +66,16 @@ body {
 
 .button {
   font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
   color: #090909;
   font-size: 18px;
   cursor: pointer;
-  background: #e8e8e8;
   border: 1px solid #e8e8e8;
-  border-radius: 0.5em;
+  border-radius: 0.9em;
   transition: all 0.2s;
   transform: scale(1);
-  box-shadow: 5px 5px 24px #bebebe, -5px -5px 24px #ffffff;
+  background: #e8e8e8;
+  box-shadow: 6px 6px 14px #c7c7c7, -6px -6px 14px #f9f9f9;
 }
 
 .button:hover {
@@ -78,7 +84,7 @@ body {
 
 .button:active {
   transform: scale(0.98);
-  box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+  box-shadow: 5px 5px 9px #c7c7c7, -5px -5px 9px #f9f9f9;
 }
 
 button[data-key='0'] {
@@ -100,16 +106,21 @@ footer {
   bottom: 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
+  font-weight: bold;
   justify-self: flex-end;
-  margin: 0 0 10px 0;
+  margin: 0 0 16px 0;
   color: #090909;
 }
 
 footer a {
-  font-size: 22px;
+  color: #090909;
+}
+
+footer i {
+  font-size: 18px;
 }
 
 .fa-github {
   color: #090909;
-  padding: 0 0 0 4px;
+  padding: 0 0 0 2px;
 }
