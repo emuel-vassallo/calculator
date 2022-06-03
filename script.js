@@ -11,3 +11,21 @@ const operate = (operator, a, b) => {
     '/': divide(a, b),
   }[operator];
 };
+
+const updateDisplay = () => {
+  const resultTag = document.querySelector('#result');
+  const digitButtons = document.querySelectorAll('.digit');
+  let clickedButtonValues = [];
+  for (const button of digitButtons) {
+    button.addEventListener('click', () => {
+      const clickedButtonValue = button.getAttribute('data-key');
+      clickedButtonValues = [...clickedButtonValues, clickedButtonValue];
+      resultTag.textContent = clickedButtonValues.join('');
+    });
+  }
+};
+
+const getResultValue = () =>
+  parseInt(document.querySelector('#result').textContent);
+
+updateDisplay();

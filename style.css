@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
 body {
   box-sizing: border-box;
   display: flex;
@@ -39,8 +38,9 @@ body {
   width: 90%;
   height: 90px;
   padding: 16px;
-  margin: 54px 0 18px 0;
+  margin: 46px 0 26px 0;
   color: #090909;
+  overflow: hidden;
 }
 
 #history {
