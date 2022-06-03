@@ -12,7 +12,7 @@ const operate = (operator, a, b) => {
   }[operator];
 };
 
-const updateDisplay = () => {
+const updateDisplayOnClick = () => {
   const resultTag = document.querySelector('#result');
   const digitButtons = document.querySelectorAll('.digit');
   let clickedButtonValues = [];
@@ -28,4 +28,22 @@ const updateDisplay = () => {
 const getResultValue = () =>
   parseInt(document.querySelector('#result').textContent);
 
-updateDisplay();
+const updateOperationDisplay = (operation) =>
+  (document.querySelector('#operations').textContent = operation);
+
+const getOperationInput = () => {
+  const operatorButtons = document.querySelectorAll('.operator');
+  let operator;
+  let firstNumber;
+  for (const button of operatorButtons) {
+    button.addEventListener('click', () => {
+      operator = button.getAttribute('data-key');
+      firstNumber = getResultValue();
+      const operation = `${firstNumber} ${operator}`;
+      updateOperationDisplay(operation);
+    });
+  }
+};
+
+updateDisplayOnClick();
+getOperationInput();

@@ -30,7 +30,6 @@ body {
   justify-content: space-between;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  letter-spacing: 5px;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
   border-radius: 0.5em;
@@ -43,9 +42,9 @@ body {
   overflow: hidden;
 }
 
-#history {
+#operations {
   margin: 0;
-  font-size: 26px;
+  font-size: 21px;
 }
 
 #result {
