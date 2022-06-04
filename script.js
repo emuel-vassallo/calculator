@@ -14,12 +14,20 @@ const operate = (operator, a, b) => {
   }[operator];
 };
 
-const getDisplayOperatorSymbol = (operatorSymbol) => {
+const getDisplayOperatorSymbol = (operationOperator) => {
   return {
     '-': '−',
     '/': '÷',
     '*': '×',
-  }[operatorSymbol];
+  }[operationOperator];
+};
+
+const getOperationOperatorSymbol = (displayOperator) => {
+  return {
+    '−': '-',
+    '÷': '/',
+    '×': '*',
+  }[displayOperator];
 };
 
 const resetDisplayResult = () => {
@@ -46,7 +54,6 @@ const updateDisplayOnClick = () => {
 
   for (const digitButton of digitButtons) {
     digitButton.addEventListener('click', () => {
-      console.log('Digit click');
       const clickedDigit = digitButton.getAttribute('data-key');
       clickedDigits = [...clickedDigits, clickedDigit];
       resultTag.textContent = clickedDigits.join('');
@@ -55,8 +62,8 @@ const updateDisplayOnClick = () => {
 
   for (const button of operatorButtons) {
     button.onclick = () => {
-      console.log('operator click');
       clickedDigits = [];
+      // clickedDigits = resultTag.textContent;
     };
   }
 };
@@ -85,5 +92,32 @@ const updateDisplayOperations = () => {
   }
 };
 
+const showOperationResult = () => {
+  const operationTag = document.querySelector('#operations');
+  const resultTag = document.querySelector('#result');
+  const equalsButton = document.querySelector('[data-key="="]');
+
+  equalsButton.onclick = () => {
+    const operation = operationTag.textContent;
+    if (!operation) return;
+
+    const firstNumber = parseInt(operation.split(' ')[0]);
+
+    let displayOperator = operation.split(' ')[1];
+    let operationOperator;
+
+    if (displayOperator === '+') operationOperator = '+';
+    else operationOperator = getOperationOperatorSymbol(displayOperator);
+
+    const newNumber = parseInt(resultTag.textContent);
+
+    const operationResult = operate(operationOperator, firstNumber, newNumber);
+    resultTag.textContent = operationResult;
+
+    operationTag.textContent = `${firstNumber} ${displayOperator} ${newNumber} =`;
+  };
+};
+
 updateDisplayOnClick();
 updateDisplayOperations();
+showOperationResult();
