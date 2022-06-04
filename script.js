@@ -1,3 +1,5 @@
+'use strict';
+
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
@@ -12,38 +14,76 @@ const operate = (operator, a, b) => {
   }[operator];
 };
 
-const updateDisplayOnClick = () => {
-  const resultTag = document.querySelector('#result');
-  const digitButtons = document.querySelectorAll('.digit');
-  let clickedButtonValues = [];
-  for (const button of digitButtons) {
-    button.addEventListener('click', () => {
-      const clickedButtonValue = button.getAttribute('data-key');
-      clickedButtonValues = [...clickedButtonValues, clickedButtonValue];
-      resultTag.textContent = clickedButtonValues.join('');
-    });
-  }
+const getDisplayOperatorSymbol = (operatorSymbol) => {
+  return {
+    '-': '−',
+    '/': '÷',
+    '*': '×',
+  }[operatorSymbol];
 };
 
-const getResultValue = () =>
+const resetDisplayResult = () => {
+  const resultTag = document.querySelector('#result');
+  resultTag.textContent = '';
+};
+
+const getDisplayResultValue = () =>
   parseInt(document.querySelector('#result').textContent);
 
 const updateOperationDisplay = (operation) =>
   (document.querySelector('#operations').textContent = operation);
 
-const getOperationInput = () => {
+const resetResultsDisplay = () => {
+  const resultTag = document.querySelector('#result');
+  resultTag.textContent = '';
+};
+
+const updateDisplayOnClick = () => {
+  const resultTag = document.querySelector('#result');
   const operatorButtons = document.querySelectorAll('.operator');
-  let operator;
-  let firstNumber;
+  const digitButtons = document.querySelectorAll('.digit');
+  let clickedDigits = [];
+
+  for (const digitButton of digitButtons) {
+    digitButton.addEventListener('click', () => {
+      console.log('Digit click');
+      const clickedDigit = digitButton.getAttribute('data-key');
+      clickedDigits = [...clickedDigits, clickedDigit];
+      resultTag.textContent = clickedDigits.join('');
+    });
+  }
+
   for (const button of operatorButtons) {
-    button.addEventListener('click', () => {
-      operator = button.getAttribute('data-key');
-      firstNumber = getResultValue();
-      const operation = `${firstNumber} ${operator}`;
-      updateOperationDisplay(operation);
+    button.onclick = () => {
+      console.log('operator click');
+      clickedDigits = [];
+    };
+  }
+};
+
+const updateDisplayOperations = () => {
+  const operatorButtons = document.querySelectorAll('.operator');
+  let operatorClicked;
+  let currentOperation = [];
+
+  for (const operatorButton of operatorButtons) {
+    operatorButton.addEventListener('click', () => {
+      operatorClicked = operatorButton.getAttribute('data-key');
+
+      let displayOperator;
+      if (operatorClicked === '+') displayOperator = '+';
+      else displayOperator = getDisplayOperatorSymbol(operatorClicked);
+
+      let firstNumber = '';
+      firstNumber = getDisplayResultValue();
+
+      const newOperation = `${firstNumber} ${displayOperator}`;
+      currentOperation = [newOperation];
+
+      updateOperationDisplay(currentOperation.join(' '));
     });
   }
 };
 
 updateDisplayOnClick();
-getOperationInput();
+updateDisplayOperations();
