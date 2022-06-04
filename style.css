@@ -84,7 +84,7 @@ body {
 
 .button:active {
   transform: scale(0.98);
-  box-shadow: 5px 5px 9px #c7c7c7, -5px -5px 9px #f9f9f9;
+  box-shadow: 4px 4px 14px #c7c7c7, -4px -4px 14px #f9f9f9;
 }
 
 button[data-key='0'] {
