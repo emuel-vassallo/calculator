@@ -4,26 +4,27 @@
     <title>Calculator</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="#" />
     <link href="style.css" rel="stylesheet" />
     <script src="script.js" defer></script>
   </head>
 
   <body>
     <main>
-      <div id="calculator">
-        <div id="display">
-          <p id="operations"></p>
-          <p id="result">0</p>
+      <div class="calculator">
+        <div class="display">
+          <p id="operations-display"></p>
+          <p id="input-numbers-display">0</p>
         </div>
-        <div id="buttons">
+        <div class="buttons">
           <button class="button" id="clear">AC</button>
           <button class="button" id="delete">C</button>
-          <button data-key="+" class="button operator square" id="+">+</button>
-          <button data-key="-" class="button operator square" id="-">−</button>
+          <button data-key="+" class="button operator square">+</button>
+          <button data-key="-" class="button operator square">−</button>
           <button data-key="7" class="button digit square">7</button>
           <button data-key="8" class="button digit square">8</button>
           <button data-key="9" class="button digit square">9</button>
-          <button data-key="*" class="button operator square" id="*">×</button>
+          <button data-key="*" class="button operator square">×</button>
           <button data-key="4" class="button digit square">4</button>
           <button data-key="5" class="button digit square">5</button>
           <button data-key="6" class="button digit square">6</button>

@@ -12,7 +12,7 @@ body {
   margin: 0;
 }
 
-#calculator {
+.calculator {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,12 +21,12 @@ body {
   border-radius: 50px;
   background: #e8e8e8;
   box-shadow: 20px 20px 60px #c5c5c5, -20px -20px 60px #ffffff;
-  height: 592px;
+  height: 550px;
   width: 318px;
-  padding: 4px 32px 36px 32px;
+  padding: 46px 32px 38px 32px;
 }
 
-#display {
+.display {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -41,23 +41,22 @@ body {
   width: 90%;
   height: 100%;
   padding: 16px;
-  margin: 46px 0 26px 0;
+  margin: 0 0 28px 0;
   color: #090909;
   overflow: hidden;
 }
 
-#operations {
+#operations-display {
   margin: 0;
   font-size: 21px;
-  color: #262626;
 }
 
-#result {
+#input-numbers-display {
   margin: 0;
   font-size: 42px;
 }
 
-#buttons {
+.buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
