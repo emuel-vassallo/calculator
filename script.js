@@ -14,6 +14,7 @@ const operate = (operator, a, b) =>
   }[operator]);
 
 const getDecimalPlacesCount = (number) => {
+  if (isNaN(number)) return 0;
   number = parseFloat(number);
   if (Math.floor(number) === number) return 0;
   return number.toString().split('.')[1].length || 0;
@@ -63,7 +64,7 @@ const updateInputNumbersDisplay = () => {
 
   digitButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      const clickedDigit = button.getAttribute('data-key');
+      const clickedDigit = button.textContent;
 
       const isFloatingPointClicked = clickedDigit === '.';
 
@@ -107,7 +108,10 @@ const updateOnOperatorClick = (operatorButton) => {
   const inputNumbers = inputDisplayTag.textContent;
   if (!inputNumbers || inputNumbers == 'Error') return;
 
-  const clickedOperator = operatorButton.getAttribute('data-key');
+  let clickedOperator = operatorButton.textContent;
+  if (clickedOperator !== '+')
+    clickedOperator = getOperationOperatorSign(clickedOperator);
+
   const displayedOperation = operationsDisplayTag.textContent;
   const displayedOperationValues = displayedOperation.split(' ');
   let firstOperationNumber = parseFloat(displayedOperationValues[0]);
@@ -138,7 +142,6 @@ const updateOnOperatorClick = (operatorButton) => {
   let clickedDisplayOperator = getDisplayOperatorSign(clickedOperator);
   if (clickedOperator === '+') clickedDisplayOperator = '+';
 
-  /* [BUG: operation does not carry out if first and second numbers are equal] */
   const isInputUnchanged = parseFloat(inputNumbers) === firstOperationNumber;
   if (isInputUnchanged) {
     updateOperationDisplay(`${firstOperationNumber} ${clickedDisplayOperator}`);
@@ -218,19 +221,62 @@ const clearAllDisplayOnClick = () => {
     .addEventListener('click', () => clearAllDisplay());
 };
 
-const getBackspacedNumber = (number) =>
+const getBackspacedDigit = (number) =>
   number
     .split('')
     .splice(0, number.length - 1)
     .join('');
 
-const backspaceOnClick = () => {
+const backspaceOnButtonClick = () => {
   const inputDisplayTag = document.querySelector('#input-numbers-display');
   const backspaceButton = document.querySelector('#backspace');
   backspaceButton.addEventListener('click', () => {
-    inputDisplayTag.textContent = getBackspacedNumber(
+    inputDisplayTag.textContent = getBackspacedDigit(
       inputDisplayTag.textContent
     );
+  });
+};
+
+const clickButtonOnKeyDown = () => {
+  const equalsButton = document.querySelector('#equals');
+  const clearButton = document.querySelector('#clear');
+  const backspaceButton = document.querySelector('#backspace');
+
+  const digitButtons = {};
+  document.querySelectorAll('.digit').forEach((button) => {
+    digitButtons[button.textContent] = button;
+  });
+
+  const operatorButtons = {};
+  document.querySelectorAll('.operator').forEach((button) => {
+    if (button.textContent === '+') {
+      operatorButtons['+'] = button;
+      return;
+    }
+    operatorButtons[getOperationOperatorSign(button.textContent)] = button;
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key in digitButtons) {
+      digitButtons[e.key].click();
+      return;
+    }
+    if (e.key in operatorButtons) {
+      operatorButtons[e.key].click();
+      return;
+    }
+    if (e.key === 'Enter' || e.key === '=') {
+      equalsButton.click();
+      return;
+    }
+    if (e.key === 'Escape') {
+      clearButton.click();
+      return;
+    }
+    if (e.key === 'Backspace') {
+      backspaceButton.click();
+      return;
+    }
   });
 };
 
@@ -238,4 +284,5 @@ updateInputNumbersDisplay();
 updateDisplayOnOperatorClick();
 updateDisplayOnEqualsClick();
 clearAllDisplayOnClick();
-backspaceOnClick();
+backspaceOnButtonClick();
+clickButtonOnKeyDown();

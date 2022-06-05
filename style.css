@@ -86,7 +86,7 @@ body {
   box-shadow: 4px 4px 14px #c7c7c7, -4px -4px 14px #f9f9f9;
 }
 
-button[data-key='0'] {
+.zero {
   grid-row: 5;
   grid-column: 1/3;
 }
