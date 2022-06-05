@@ -13,6 +13,14 @@ const operate = (operator, a, b) =>
     '/': divide(a, b),
   }[operator]);
 
+const getDecimalPlacesCount = (number) => {
+  number = parseFloat(number);
+  if (Math.floor(number) === number) return 0;
+  return number.toString().split('.')[1].length || 0;
+};
+
+const getRoundedNumber = (number) => number.toFixed(3);
+
 const getDisplayOperatorSign = (operationOperator) =>
   ({
     '-': '−',
@@ -68,13 +76,13 @@ const updateOnOperatorClick = (operatorButton) => {
   const clickedOperator = operatorButton.getAttribute('data-key');
   const displayedOperation = operationsDisplayTag.textContent;
   const displayedOperationValues = displayedOperation.split(' ');
-  let firstOperationNumber = parseInt(displayedOperationValues[0]);
+  let firstOperationNumber = parseFloat(displayedOperationValues[0]);
 
   let displayOperator = displayedOperationValues[1];
   let operationOperator = getOperationOperatorSign(displayOperator);
   if (displayOperator === '+') operationOperator = '+';
 
-  const secondOperationNumber = parseInt(inputNumbers);
+  const secondOperationNumber = parseFloat(inputNumbers);
   let operationSolution;
   if (displayedOperation.includes('=')) operationSolution = inputNumbers;
   else
@@ -82,11 +90,16 @@ const updateOnOperatorClick = (operatorButton) => {
       operate(operationOperator, firstOperationNumber, secondOperationNumber) ||
       secondOperationNumber;
 
+  const decimalPlacesCount = getDecimalPlacesCount(operationSolution);
+  if (decimalPlacesCount > 3)
+    operationSolution = getRoundedNumber(operationSolution);
+  if (parseFloat(operationSolution) === 0) operationSolution = 0;
+
   let clickedDisplayOperator = getDisplayOperatorSign(clickedOperator);
   if (clickedOperator === '+') clickedDisplayOperator = '+';
 
   /* [BUG: operation does not carry out if first and second numbers are equal] */
-  const isInputUnchanged = parseInt(inputNumbers) === firstOperationNumber;
+  const isInputUnchanged = parseFloat(inputNumbers) === firstOperationNumber;
   if (isInputUnchanged) {
     updateOperationDisplay(`${firstOperationNumber} ${clickedDisplayOperator}`);
     return;
@@ -116,18 +129,22 @@ const updateOnEqualsClick = () => {
   if (displayedOperation === '' || displayedOperation.includes('=')) return;
 
   let displayedOperationValues = displayedOperation.split(' ');
-  let firstOperationNumber = parseInt(displayedOperationValues[0]);
+  let firstOperationNumber = parseFloat(displayedOperationValues[0]);
 
   let displayOperator = displayedOperationValues[1];
   let operationOperator = getOperationOperatorSign(displayOperator);
   if (displayOperator === '+') operationOperator = '+';
 
-  const secondOperationNumber = parseInt(inputNumbers);
-  const operationSolution = operate(
+  const secondOperationNumber = parseFloat(inputNumbers);
+  let operationSolution = operate(
     operationOperator,
     firstOperationNumber,
     secondOperationNumber
   );
+  const decimalPlacesCount = getDecimalPlacesCount(operationSolution);
+  if (decimalPlacesCount > 3)
+    operationSolution = getRoundedNumber(operationSolution);
+  if (parseFloat(operationSolution) === 0) operationSolution = 0;
 
   inputDisplayTag.textContent = operationSolution;
 
