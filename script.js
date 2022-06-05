@@ -35,9 +35,6 @@ const getOperationOperatorSign = (displayOperator) =>
     '×': '*',
   }[displayOperator]);
 
-const getDisplayedInputNumbers = () =>
-  parseInt(document.querySelector('#input-numbers-display').textContent);
-
 const updateOperationDisplay = (operation) =>
   (document.querySelector('#operations-display').textContent = operation);
 
@@ -70,11 +67,18 @@ const updateInputNumbersDisplay = () => {
 
       const isFloatingPointClicked = clickedDigit === '.';
 
-      if (isFloatingPointClicked && inputNumbersTag.textContent.includes('.'))
-        return;
-      if (isFloatingPointClicked && inputNumbersTag.textContent === 'Error') {
-        inputNumbersTag.textContent = '0.';
-        return;
+      const displayedInputNumbers = inputNumbersTag.textContent;
+
+      if (isFloatingPointClicked) {
+        if (
+          displayedInputNumbers === '' ||
+          displayedInputNumbers === 'Error' ||
+          displayedInputNumbers === '0'
+        ) {
+          inputNumbersTag.textContent = '0.';
+          return;
+        }
+        if (inputNumbersTag.textContent.includes('.')) return;
       }
 
       if (isOperatorButtonClicked) {
@@ -101,7 +105,7 @@ const updateOnOperatorClick = (operatorButton) => {
   const inputDisplayTag = document.querySelector('#input-numbers-display');
 
   const inputNumbers = inputDisplayTag.textContent;
-  if (inputNumbers == 'Error') return;
+  if (!inputNumbers || inputNumbers == 'Error') return;
 
   const clickedOperator = operatorButton.getAttribute('data-key');
   const displayedOperation = operationsDisplayTag.textContent;
@@ -214,7 +218,24 @@ const clearAllDisplayOnClick = () => {
     .addEventListener('click', () => clearAllDisplay());
 };
 
+const getBackspacedNumber = (number) =>
+  number
+    .split('')
+    .splice(0, number.length - 1)
+    .join('');
+
+const backspaceOnClick = () => {
+  const inputDisplayTag = document.querySelector('#input-numbers-display');
+  const backspaceButton = document.querySelector('#backspace');
+  backspaceButton.addEventListener('click', () => {
+    inputDisplayTag.textContent = getBackspacedNumber(
+      inputDisplayTag.textContent
+    );
+  });
+};
+
 updateInputNumbersDisplay();
 updateDisplayOnOperatorClick();
 updateDisplayOnEqualsClick();
 clearAllDisplayOnClick();
+backspaceOnClick();
