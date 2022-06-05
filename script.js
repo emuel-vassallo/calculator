@@ -19,7 +19,7 @@ const getDecimalPlacesCount = (number) => {
   return number.toString().split('.')[1].length || 0;
 };
 
-const getRoundedNumber = (number) => number.toFixed(3);
+const getRoundedNumber = (number) => parseFloat(number).toFixed(3);
 
 const getDisplayOperatorSign = (operationOperator) =>
   ({
@@ -68,12 +68,24 @@ const updateInputNumbersDisplay = () => {
     button.addEventListener('click', () => {
       const clickedDigit = button.getAttribute('data-key');
 
+      const isFloatingPointClicked = clickedDigit === '.';
+
+      if (isFloatingPointClicked && inputNumbersTag.textContent.includes('.'))
+        return;
+      if (isFloatingPointClicked && inputNumbersTag.textContent === 'Error') {
+        inputNumbersTag.textContent = '0.';
+        return;
+      }
+
       if (isOperatorButtonClicked) {
         inputNumbers = [];
         isOperatorButtonClicked = false;
       } else inputNumbers = [inputNumbersTag.textContent];
 
-      if (inputNumbers[0] === '0' || inputNumbersTag.textContent === 'Error') {
+      if (
+        (clickedDigit !== '.' && inputNumbers[0] === '0') ||
+        inputNumbersTag.textContent === 'Error'
+      ) {
         clearAllDisplay();
         inputNumbers = [];
       }
