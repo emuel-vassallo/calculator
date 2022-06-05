@@ -35,9 +35,6 @@ const getOperationOperatorSign = (displayOperator) =>
     '×': '*',
   }[displayOperator]);
 
-const resetDisplayedInputNumbers = () =>
-  (document.querySelector('#input-numbers-display').textContent = '');
-
 const getDisplayedInputNumbers = () =>
   parseInt(document.querySelector('#input-numbers-display').textContent);
 
@@ -45,7 +42,15 @@ const updateOperationDisplay = (operation) =>
   (document.querySelector('#operations-display').textContent = operation);
 
 const resetInputNumbersDisplay = () =>
-  (document.querySelector('#input-numbers-display').textContent = '');
+  (document.querySelector('#input-numbers-display').textContent = 0);
+
+const resetOperationsDisplay = () =>
+  (document.querySelector('#operations-display').textContent = '');
+
+const clearAllDisplay = () => {
+  resetOperationsDisplay();
+  resetInputNumbersDisplay();
+};
 
 const updateInputNumbersDisplay = () => {
   const inputNumbersTag = document.querySelector('#input-numbers-display');
@@ -68,7 +73,10 @@ const updateInputNumbersDisplay = () => {
         isOperatorButtonClicked = false;
       } else inputNumbers = [inputNumbersTag.textContent];
 
-      if (inputNumbers[0] === '0') inputNumbers = [];
+      if (inputNumbers[0] === '0' || inputNumbersTag.textContent === 'Error') {
+        clearAllDisplay();
+        inputNumbers = [];
+      }
 
       inputNumbers = [...inputNumbers, clickedDigit];
       inputNumbersTag.textContent = inputNumbers.join('');
@@ -81,6 +89,7 @@ const updateOnOperatorClick = (operatorButton) => {
   const inputDisplayTag = document.querySelector('#input-numbers-display');
 
   const inputNumbers = inputDisplayTag.textContent;
+  if (inputNumbers == 'Error') return;
 
   const clickedOperator = operatorButton.getAttribute('data-key');
   const displayedOperation = operationsDisplayTag.textContent;
@@ -92,6 +101,12 @@ const updateOnOperatorClick = (operatorButton) => {
   if (displayOperator === '+') operationOperator = '+';
 
   const secondOperationNumber = parseFloat(inputNumbers);
+
+  if (operationOperator === '/' && secondOperationNumber === 0) {
+    inputDisplayTag.textContent = 'Error';
+    return;
+  }
+
   let operationSolution;
   if (displayedOperation.includes('=')) operationSolution = inputNumbers;
   else
@@ -132,7 +147,9 @@ const updateDisplayOnOperatorClick = () =>
 const updateOnEqualsClick = () => {
   const operationsDisplayTag = document.querySelector('#operations-display');
   const inputDisplayTag = document.querySelector('#input-numbers-display');
+
   const inputNumbers = inputDisplayTag.textContent;
+  if (inputNumbers == 'Error') return;
 
   let displayedOperation = operationsDisplayTag.textContent;
   if (displayedOperation === '' || displayedOperation.includes('=')) return;
@@ -145,11 +162,18 @@ const updateOnEqualsClick = () => {
   if (displayOperator === '+') operationOperator = '+';
 
   const secondOperationNumber = parseFloat(inputNumbers);
+
+  if (operationOperator === '/' && secondOperationNumber === 0) {
+    inputDisplayTag.textContent = 'Error';
+    return;
+  }
+
   let operationSolution = operate(
     operationOperator,
     firstOperationNumber,
     secondOperationNumber
   );
+
   const decimalPlacesCount = getDecimalPlacesCount(operationSolution);
   if (decimalPlacesCount > 3)
     operationSolution = getRoundedNumber(operationSolution);
@@ -173,13 +197,9 @@ const updateDisplayOnEqualsClick = () =>
     .addEventListener('click', () => updateOnEqualsClick());
 
 const clearAllDisplayOnClick = () => {
-  const operationsDisplayTag = document.querySelector('#operations-display');
-  const inputDisplayTag = document.querySelector('#input-numbers-display');
-  const clearButton = document.querySelector('#clear');
-  clearButton.addEventListener('click', () => {
-    operationsDisplayTag.textContent = '';
-    inputDisplayTag.textContent = 0;
-  });
+  document
+    .querySelector('#clear')
+    .addEventListener('click', () => clearAllDisplay());
 };
 
 updateInputNumbersDisplay();
