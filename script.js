@@ -6,12 +6,12 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 const operate = (operator, a, b) =>
-  ({
-    '+': add(a, b),
-    '-': subtract(a, b),
-    '*': multiply(a, b),
-    '/': divide(a, b),
-  }[operator]);
+({
+  '+': add(a, b),
+  '-': subtract(a, b),
+  '*': multiply(a, b),
+  '/': divide(a, b),
+}[operator]);
 
 const getDecimalPlacesCount = (number) => {
   if (isNaN(number)) return 0;
@@ -23,18 +23,18 @@ const getDecimalPlacesCount = (number) => {
 const getRoundedNumber = (number) => parseFloat(number).toFixed(3);
 
 const getDisplayOperatorSign = (operationOperator) =>
-  ({
-    '-': '−',
-    '/': '÷',
-    '*': '×',
-  }[operationOperator]);
+({
+  '-': '−',
+  '/': '÷',
+  '*': '×',
+}[operationOperator]);
 
 const getOperationOperatorSign = (displayOperator) =>
-  ({
-    '−': '-',
-    '÷': '/',
-    '×': '*',
-  }[displayOperator]);
+({
+  '−': '-',
+  '÷': '/',
+  '×': '*',
+}[displayOperator]);
 
 const updateOperationDisplay = (operation) =>
   (document.querySelector('#operations-display').textContent = operation);
@@ -65,6 +65,9 @@ const updateInputNumbersDisplay = () => {
   digitButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const clickedDigit = button.textContent;
+      const operationsDisplayTag = document.querySelector(
+        '#operations-display'
+      );
       const displayedInputNumbers = inputNumbersTag.textContent;
       const isFloatingPointClicked = clickedDigit === '.';
 
@@ -95,7 +98,8 @@ const updateInputNumbersDisplay = () => {
       if (
         (isOperatorButtonClicked && displayedInputNumbers === '0') ||
         inputNumbersTag.textContent === 'Error' ||
-        inputNumbersTag.textContent === '0'
+        (inputNumbersTag.textContent === '0' &&
+          operationsDisplayTag.textContent === '')
       ) {
         clearAllDisplay();
         newInputNumbers = [];
