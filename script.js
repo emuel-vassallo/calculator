@@ -55,7 +55,7 @@ const updateInputNumbersDisplay = () => {
   const operatorButtons = document.querySelectorAll('.operator');
   const digitButtons = document.querySelectorAll('.digit');
 
-  let inputNumbers;
+  let newInputNumbers;
   let isOperatorButtonClicked = false;
 
   operatorButtons.forEach((button) =>
@@ -65,38 +65,44 @@ const updateInputNumbersDisplay = () => {
   digitButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const clickedDigit = button.textContent;
-
+      const displayedInputNumbers = inputNumbersTag.textContent;
       const isFloatingPointClicked = clickedDigit === '.';
 
-      const displayedInputNumbers = inputNumbersTag.textContent;
+      if (isFloatingPointClicked && displayedInputNumbers.includes('.')) return;
 
-      if (isFloatingPointClicked) {
-        if (
-          displayedInputNumbers === '' ||
-          displayedInputNumbers === 'Error' ||
-          displayedInputNumbers === '0'
-        ) {
-          inputNumbersTag.textContent = '0.';
-          return;
-        }
-        if (inputNumbersTag.textContent.includes('.')) return;
+      if (isFloatingPointClicked && displayedInputNumbers === '-') {
+        inputNumbersTag.textContent = '-0.';
+        return;
       }
-
-      if (isOperatorButtonClicked) {
-        inputNumbers = [];
-        isOperatorButtonClicked = false;
-      } else inputNumbers = [inputNumbersTag.textContent];
 
       if (
-        (clickedDigit !== '.' && inputNumbers[0] === '0') ||
-        inputNumbersTag.textContent === 'Error'
+        isFloatingPointClicked &&
+        (displayedInputNumbers === '' ||
+          displayedInputNumbers === '0' ||
+          displayedInputNumbers === 'Error')
       ) {
-        clearAllDisplay();
-        inputNumbers = [];
+        inputNumbersTag.textContent = '0.';
+        return;
       }
 
-      inputNumbers = [...inputNumbers, clickedDigit];
-      inputNumbersTag.textContent = inputNumbers.join('');
+      if (isOperatorButtonClicked && !isFloatingPointClicked) {
+        isOperatorButtonClicked = false;
+        newInputNumbers = [];
+      } else {
+        newInputNumbers = [displayedInputNumbers];
+      }
+
+      if (
+        (isOperatorButtonClicked && displayedInputNumbers === '0') ||
+        inputNumbersTag.textContent === 'Error' ||
+        inputNumbersTag.textContent === '0'
+      ) {
+        clearAllDisplay();
+        newInputNumbers = [];
+      }
+
+      newInputNumbers = [...newInputNumbers, clickedDigit];
+      inputNumbersTag.textContent = newInputNumbers.join('');
     });
   });
 };
