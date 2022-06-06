@@ -1,6 +1,8 @@
 # Calculator
 
-**A neumorphic calculator, created as part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/foundations-calculator).**
+**A neumorphic web calculator with keyboard support, created as part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/foundations-calculator).**
+
+![screenshot 1](images/screenshot1.png)
 
 ## 🔴 Live Demo
 
