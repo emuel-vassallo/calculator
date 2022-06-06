@@ -22,6 +22,10 @@
 - Using objects and accessing values from them
 - Using string functions like split to get an array
 
+## ☑️ Additional Features
+
+- [ ] Dark mode toggle button
+
 ## ✨ Inspiration and Credits
 
 - [neumorphism.io](https://neumorphism.io/#e8e8e8)
