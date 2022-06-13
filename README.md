@@ -2,19 +2,21 @@
 
 A neumorphic web calculator with keyboard support, created as part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/foundations-calculator).
 
+## Showcase
+
 ![screenshot 1](images/screenshot1.png)
 
-## 🔴 Live Demo
+## Live Demo
 
 👉 **Preview**: https://emuel-vassallo.github.io/calculator/
 
-## 🖥️ Technologies
+## Technologies
 
 - HTML
 - CSS
 - JavaScript
 
-## 📖 What I learned
+## What I learned
 
 - Clicking buttons when corresponding keyboard key is down
 - Creating a decent looking UI with Neumorphism
@@ -24,11 +26,11 @@ A neumorphic web calculator with keyboard support, created as part of The Odin P
 - Using objects and accessing values from them
 - Using string functions like split to get an array
 
-## ☑️ Additional Features
+## TODO
 
 - [ ] Dark mode toggle button
 
-## ✨ Inspiration and Credits
+## Inspiration and Credits
 
 - [neumorphism.io](https://neumorphism.io/#e8e8e8)
 - [Neomorphism button design](https://uiverse.io/detail/adamgiebl/lucky-donkey-6) by [adamgiebl](https://github.com/adamgiebl)
