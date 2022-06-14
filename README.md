@@ -28,7 +28,7 @@ A neumorphic web calculator with keyboard support, created as part of The Odin P
 
 ## TODO
 
-- [ ] Dark mode toggle button
+- [x] Dark mode toggle button
 
 ## Inspiration and Credits
 

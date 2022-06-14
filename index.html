@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Calculator</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="shortcut icon"
-      href="https://img.icons8.com/color/48/undefined/calculator--v1.png"
-    />
-    <link href="style.css" rel="stylesheet" />
-    <script src="script.js" defer></script>
-  </head>
 
-  <body>
-    <main>
-      <div class="calculator">
-        <div class="display">
-          <p id="operations-display"></p>
-          <p id="input-numbers-display">0</p>
-        </div>
-        <div class="buttons">
-          <button type="button" class="button" id="clear">AC</button>
-          <button type="button" class="button" id="backspace">C</button>
-          <button type="button" class="button operator square">+</button>
-          <button type="button" class="button operator square">−</button>
-          <button type="button" class="button digit square">7</button>
-          <button type="button" class="button digit square">8</button>
-          <button type="button" class="button digit square">9</button>
-          <button type="button" class="button operator square">×</button>
-          <button type="button" class="button digit square">4</button>
-          <button type="button" class="button digit square">5</button>
-          <button type="button" class="button digit square">6</button>
-          <button type="button" class="button operator square">÷</button>
-          <button type="button" class="button digit square">1</button>
-          <button type="button" class="button digit square">2</button>
-          <button type="button" class="button digit square">3</button>
-          <button type="button" class="button" id="equals">=</button>
-          <button type="button" class="button digit zero">0</button>
-          <button type="button" class="button square digit">.</button>
-        </div>
+<head>
+  <title>Calculator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="https://img.icons8.com/color/48/undefined/calculator--v1.png" />
+  <link href="style.css" rel="stylesheet" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <div class="calculator">
+      <div class="switch-container">
+        <label class="switch" title="Toggle dark theme">
+          <input type="checkbox" checked="unchecked" />
+          <span class="slider"></span>
+        </label>
       </div>
-    </main>
-    <footer>
-      Made with ❤️ by
-      <a href="https://github.com/emuel-vassallo/" target="_blank">
-        Emuel Vassallo
-      </a>
-    </footer>
-  </body>
+      <div class="display">
+        <p id="operations-display"></p>
+        <p id="input-numbers-display">0</p>
+      </div>
+      <div class="buttons">
+        <button type="button" class="button" id="clear">AC</button>
+        <button type="button" class="button" id="backspace">C</button>
+        <button type="button" class="button operator square">+</button>
+        <button type="button" class="button operator square">−</button>
+        <button type="button" class="button digit square">7</button>
+        <button type="button" class="button digit square">8</button>
+        <button type="button" class="button digit square">9</button>
+        <button type="button" class="button operator square">×</button>
+        <button type="button" class="button digit square">4</button>
+        <button type="button" class="button digit square">5</button>
+        <button type="button" class="button digit square">6</button>
+        <button type="button" class="button operator square">÷</button>
+        <button type="button" class="button digit square">1</button>
+        <button type="button" class="button digit square">2</button>
+        <button type="button" class="button digit square">3</button>
+        <button type="button" class="button" id="equals">=</button>
+        <button type="button" class="button digit zero">0</button>
+        <button type="button" class="button square digit">.</button>
+      </div>
+    </div>
+  </main>
+  <footer>
+    Made with ❤️ by
+    <a href="https://github.com/emuel-vassallo/" target="_blank">
+      Emuel Vassallo
+    </a>
+  </footer>
+</body>
+
 </html>

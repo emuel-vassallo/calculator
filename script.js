@@ -294,9 +294,22 @@ const clickButtonOnKeyDown = () => {
   });
 };
 
+const toggleThemeOnClick = () => {
+  const themeToggleSlider = document.querySelector('.slider');
+  const themeToggleCheckbox = document.querySelector('.switch input');
+
+  themeToggleSlider.addEventListener('click', () =>
+    document.body.classList.toggle('dark-theme')
+  );
+
+  if (themeToggleCheckbox.checked) document.body.classList.add('dark-theme');
+  else document.body.classList.remove('dark-theme');
+};
+
 updateInputNumbersDisplay();
 updateDisplayOnOperatorClick();
 updateDisplayOnEqualsClick();
 clearAllDisplayOnClick();
 backspaceOnButtonClick();
 clickButtonOnKeyDown();
+toggleThemeOnClick();
