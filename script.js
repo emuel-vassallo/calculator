@@ -6,12 +6,12 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 const operate = (operator, a, b) =>
-({
-  '+': add(a, b),
-  '-': subtract(a, b),
-  '*': multiply(a, b),
-  '/': divide(a, b),
-}[operator]);
+  ({
+    '+': add(a, b),
+    '-': subtract(a, b),
+    '*': multiply(a, b),
+    '/': divide(a, b),
+  }[operator]);
 
 const getDecimalPlacesCount = (number) => {
   if (isNaN(number)) return 0;
@@ -23,18 +23,18 @@ const getDecimalPlacesCount = (number) => {
 const getRoundedNumber = (number) => parseFloat(number).toFixed(3);
 
 const getDisplayOperatorSign = (operationOperator) =>
-({
-  '-': '−',
-  '/': '÷',
-  '*': '×',
-}[operationOperator]);
+  ({
+    '-': '−',
+    '/': '÷',
+    '*': '×',
+  }[operationOperator]);
 
 const getOperationOperatorSign = (displayOperator) =>
-({
-  '−': '-',
-  '÷': '/',
-  '×': '*',
-}[displayOperator]);
+  ({
+    '−': '-',
+    '÷': '/',
+    '×': '*',
+  }[displayOperator]);
 
 const updateOperationDisplay = (operation) =>
   (document.querySelector('#operations-display').textContent = operation);
@@ -313,3 +313,7 @@ clearAllDisplayOnClick();
 backspaceOnButtonClick();
 clickButtonOnKeyDown();
 toggleThemeOnClick();
+
+document
+  .getElementById('year')
+  .appendChild(document.createTextNode(new Date().getFullYear()));

@@ -23,10 +23,12 @@
   --toggle-theme-switch-box-shadow: 3px 3px 6px #c7c7c7, -3px -3px 6px #f9f9f9;
   --toggle-theme-switch-slider-box-shadow: 1px 1px 2px #bcbcbc,
     -1px -1px 2px #ffffff;
+  --footer-color: #000000;
+  --footer-link-color: #636363;
 }
 
 body.dark-theme {
-  --color: #aaaaaa;
+  --color: #aeaeae;
   --background-color: #1e1e1e;
   --main-calculator-color: #1f1f1f;
   --calculator-hover-border-color: #181818;
@@ -45,6 +47,8 @@ body.dark-theme {
   --toggle-theme-switch-box-shadow: 3px 3px 6px #1a1a1a, -3px -3px 6px #242424;
   --toggle-theme-switch-slider-box-shadow: 1px 1px 2px #1d1d1d,
     -1px -1px 2px #292929;
+  --footer-color: #cfcfcf;
+  --footer-link-color: #a0a0a0;
 }
 
 body {
@@ -208,23 +212,19 @@ body {
 footer {
   position: absolute;
   bottom: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  justify-self: flex-end;
-  margin: 0 0 16px 0;
-  color: var(--color);
+  font-size: 0.8rem;
+  color: var(--footer-color);
+  margin-bottom: 3px;
 }
 
 footer a {
-  color: var(--color);
+  color: var(--footer-link-color);
+  text-decoration: none;
 }
 
-footer i {
-  font-size: 18px;
-}
-
-.fa-github {
-  color: var(--color);
-  padding: 0 0 0 2px;
+footer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
