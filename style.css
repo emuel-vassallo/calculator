@@ -14,10 +14,15 @@
   --toggle-theme-switch-width: 62px;
   --toggle-theme-switch-height: 29px;
   --toggle-theme-switch-icon-size: 16px;
+  --toggle-theme-switch-icon-background: linear-gradient(
+    145deg,
+    #d9d9d9,
+    #f8f8f8
+  );
   --toggle-theme-switch-color: #efefef;
   --toggle-theme-switch-box-shadow: 3px 3px 6px #c7c7c7, -3px -3px 6px #f9f9f9;
-  --toggle-theme-switch-slider-box-shadow: 1px 1px 3px #c7c7c7,
-    -1px -1px 3px #f9f9f9;
+  --toggle-theme-switch-slider-box-shadow: 1px 1px 2px #bcbcbc,
+    -1px -1px 2px #ffffff;
 }
 
 body.dark-theme {
@@ -31,10 +36,15 @@ body.dark-theme {
   --calculator-button-box-shadow: 6px 6px 14px #1a1a1a, -6px -6px 14px #242424;
   --calculator-button-box-shadow-active: 4px 4px 14px #1a1a1a,
     -4px -4px 14px #242424;
+  --toggle-theme-switch-icon-background: linear-gradient(
+    145deg,
+    #252525,
+    #303030
+  );
   --toggle-theme-switch-color: #323232;
   --toggle-theme-switch-box-shadow: 3px 3px 6px #1a1a1a, -3px -3px 6px #242424;
-  --toggle-theme-switch-slider-box-shadow: 1px 1px 3px #1a1a1a,
-    -1px -1px 3px #242424;
+  --toggle-theme-switch-slider-box-shadow: 1px 1px 2px #1d1d1d,
+    -1px -1px 2px #292929;
 }
 
 body {
@@ -105,7 +115,7 @@ body {
   left: 8px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--background-color);
+  background: var(--toggle-theme-switch-icon-background);
   box-shadow: var(--toggle-theme-switch-slider-box-shadow);
   transition: 0.4s;
 }
