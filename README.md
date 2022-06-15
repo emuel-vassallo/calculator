@@ -4,11 +4,11 @@ A neumorphic web calculator with keyboard support. Created as part of The Odin P
 
 ## Showcase
 
-## Dark Theme
+### Dark Theme
 
 ![dark theme screenshot](images/screenshot-dark.png)
 
-## Light Theme
+### Light Theme
 
 ![light theme screenshot](images/screenshot-light.png)
 
@@ -16,7 +16,7 @@ A neumorphic web calculator with keyboard support. Created as part of The Odin P
 
 👉 **Preview**: https://emuel-vassallo.github.io/calculator/
 
-## Technologies
+## Built With
 
 - HTML
 - CSS
@@ -34,9 +34,9 @@ A neumorphic web calculator with keyboard support. Created as part of The Odin P
 
 ## TODO
 
-- [x] Dark mode toggle button
+- [x] Light/Dark theme toggle button
 
-## Inspiration and Credits
+## Credits and Inspiration
 
 - [neumorphism.io](https://neumorphism.io/#e8e8e8)
 - [Neomorphism button design](https://uiverse.io/detail/adamgiebl/lucky-donkey-6) by [adamgiebl](https://github.com/adamgiebl)
