@@ -2,6 +2,8 @@
 
 A neumorphic web calculator with keyboard support. Created as part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/foundations-calculator).
 
+### [Live Demo](https://emuel-vassallo.github.io/calculator/)
+
 ## Showcase
 
 ### Dark Theme
@@ -12,15 +14,18 @@ A neumorphic web calculator with keyboard support. Created as part of The Odin P
 
 ![light theme screenshot](images/screenshot-light.png)
 
-## Live Demo
-
-👉 **Preview**: https://emuel-vassallo.github.io/calculator/
-
 ## Built With
 
 - HTML
 - CSS
 - JavaScript
+
+## Features
+
+- Neumorphism Design
+- Keyboard support
+- Dark/Light theme toggle button
+- Smooth animations and transitions
 
 ## What I learned
 
