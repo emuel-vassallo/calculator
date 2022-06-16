@@ -24,7 +24,7 @@
   --toggle-theme-switch-slider-box-shadow: 1px 1px 2px #bcbcbc,
     -1px -1px 2px #ffffff;
   --footer-color: #000000;
-  --footer-link-color: #636363;
+  --footer-link-color: #656565;
 }
 
 body.dark-theme {
@@ -47,7 +47,7 @@ body.dark-theme {
   --toggle-theme-switch-box-shadow: 3px 3px 6px #1a1a1a, -3px -3px 6px #242424;
   --toggle-theme-switch-slider-box-shadow: 1px 1px 2px #1d1d1d,
     -1px -1px 2px #292929;
-  --footer-color: #cfcfcf;
+  --footer-color: #d0d0d0;
   --footer-link-color: #a0a0a0;
 }
 
